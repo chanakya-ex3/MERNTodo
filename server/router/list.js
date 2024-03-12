@@ -24,7 +24,7 @@ router.put("/updateTask/:id", async (req, res) => {
         const { title, body, email } = req.body;
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            const list = await List.findOneAndUpdate(req.params.id, { title, body });
+            const list = await List.findByIdAndUpdate(req.params.id, { title, body });
             list.save().then(() => res.status(200).json({ message: "Task Updated" }));
         }
     } catch (error) {
