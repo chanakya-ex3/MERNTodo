@@ -14,7 +14,7 @@ router.post("/create", async (req, res) => {
             existingUser.save();
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.log(error)
     }
 });
 
@@ -33,7 +33,7 @@ router.put("/updateTask/:id", async (req, res) => {
 });
 
 // Delete
-router.delete("/deleteTask/:id", async (req, res) => {
+router.delete("/deleteTask/:id", async (req, res) => {VI
     try {
         const { email } = req.body;
         const existingUser = await User.findOneAndUpdate({ email },{ $pull:{list: req.params.id}});
